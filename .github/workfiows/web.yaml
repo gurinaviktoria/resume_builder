@@ -1,4 +1,4 @@
-name: Deploy TWIP Path WEB app to GitHub Pages
+name: Deploy Resume Builder WEB app to GitHub Pages
 
 on:
   push:
@@ -24,14 +24,19 @@ jobs:
       - name: Build web app
         run: flutter build web --base-href "/resume_builder/"
 
-      - name: Upload static files
-        uses: actions/upload-pages-artifact@v1
+      - name: Upload static files as artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: build/web
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      contents: read
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        id: deployment
+        uses: actions/deploy-pages@v4
