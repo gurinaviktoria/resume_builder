@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +36,9 @@ class _HomePageState extends State<HomePage> {
         ),
         child: const Icon(Icons.add),
       ),
-      body: ListView.builder(
+      body: vm.people.isEmpty
+          ? const Center(child: Text('No people added yet.'))
+          : ListView.builder(
         itemCount: vm.people.length,
         itemBuilder: (_, index) {
           final person = vm.people[index];
