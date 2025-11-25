@@ -22,7 +22,7 @@ jobs:
         run: flutter pub get
 
       - name: Build web app
-        run: flutter build web --base-href "/twip_app/"
+        run: flutter build web --base-href "/resume_builder/"
 
       - name: Upload static files
         uses: actions/upload-pages-artifact@v1
